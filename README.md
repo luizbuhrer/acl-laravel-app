@@ -28,6 +28,9 @@ DB_DATABASE=acl_db
 DB_USERNAME=root
 DB_PASSWORD=secret
 
+# Entrar no arquivo para usar o artisan
+cd acl-laravel-app
+
 # Gere a chave da aplicação
 php artisan key:generate
 
