@@ -18,17 +18,26 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//USUÁRIO COMUM: acesso a produtos, categorias, marcas
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::view('/produtos', 'produtos')->name('produtos');
-    Route::view('/categorias', 'categorias')->name('categorias');
-    Route::view('/marcas', 'marcas')->name('marcas');
-});
+ // ROTAS PARA O USUÁRIO COMUM
+    Route::get('/produtos', function () {
+        return 'Gestão de Produtos';
+    })->name('produtos.index');
 
-//ADMINISTRADOR: acesso a usuários, permissões
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::view('/usuarios', 'admin.usuarios')->name('admin.usuarios');
-    Route::view('/permissoes', 'admin.permissoes')->name('admin.permissoes');
-});
+    Route::get('/categorias', function () {
+        return 'Gestão de Categorias';
+    })->name('categorias.index');
+
+    Route::get('/marcas', function () {
+        return 'Gestão de Marcas';
+    })->name('marcas.index');
+
+ // ROTAS PARA O ADMIN
+    Route::get('/usuarios', function () {
+        return 'Gestão de Usuários';
+    })->name('usuarios.index');
+
+    Route::get('/permissoes', function () {
+        return 'Gestão de Permissões';
+    })->name('permissoes.index');
 
 require __DIR__.'/auth.php';
