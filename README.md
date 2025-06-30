@@ -13,7 +13,7 @@ Sistema de autenticação com controle de permissões baseado em papéis (ACL) u
 ## Instalação
 
 ```bash
-git clone https://github.com/seu-usuario/acl-laravel-app.git
+git clone https://github.com/luizbuhrer/acl-laravel-app.git
 cd acl-laravel-app
 
 # Instale as dependências
