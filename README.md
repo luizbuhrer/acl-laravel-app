@@ -38,7 +38,6 @@ php artisan key:generate
 php artisan migrate --seed
 
 #Isso irá criar um usuário administrador:
-
 Email: admin@example.com
 
 Senha: password
@@ -50,7 +49,7 @@ admin → Acesso às rotas de gestão de usuários e permissões
 
 user → Acesso às rotas de produtos, categorias e marcas
 
-Painel após login
+# Painel após login
 Dashboard: /dashboard
 
 Admin:
@@ -70,6 +69,6 @@ Usuário comum:
 # Inicie o servidor local
 php artisan serve
 
-# Login 
+# Login
 Admin: admin@email.com / 12345678
 Comum: comum@email.com / 12345678
