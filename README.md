@@ -46,29 +46,13 @@ Senha: password
 A aplicação tem dois tipos de usuários:
 
 admin → Acesso às rotas de gestão de usuários e permissões
+# admin@example.com
+# password
 
 user → Acesso às rotas de produtos, categorias e marcas
-
-# Painel após login
-Dashboard: /dashboard
-
-Admin:
-
-/admin/usuarios
-
-/admin/permissoes
-
-Usuário comum:
-
-/produtos
-
-/categorias
-
-/marcas
+# user@example.com
+# password
 
 # Inicie o servidor local
 php artisan serve
 
-# Login
-Admin: admin@email.com / 12345678
-Comum: comum@email.com / 12345678

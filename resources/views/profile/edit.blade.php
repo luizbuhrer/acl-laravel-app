@@ -1,29 +1,33 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+    <h2>Editar Perfil</h2>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+    @if(session('status'))
+        <p style="color: green;">{{ session('status') }}</p>
+    @endif
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+    <form method="POST" action="{{ route('profile.update') }}">
+        @csrf
+        @method('PATCH')
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
+        <div>
+            <label>Nome</label><br>
+            <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}">
         </div>
-    </div>
+
+        <div>
+            <label>Email</label><br>
+            <input type="email" name="email" value="{{ old('email', auth()->user()->email) }}">
+        </div>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <form method="POST" action="{{ route('profile.destroy') }}" onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');" style="margin-top:20px;">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" style="color: red;">Excluir Conta</button>
+    </form>
+
+    <p><a href="{{ route('dashboard') }}">← Voltar ao Dashboard</a></p>
 </x-app-layout>

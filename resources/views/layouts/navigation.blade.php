@@ -15,6 +15,27 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @role('user')
+                        <x-nav-link :href="route('produtos')" :active="request()->routeIs('produtos')">
+                            {{ __('Gestão de Produtos') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('categorias')" :active="request()->routeIs('categorias')">
+                            {{ __('Gestão de Categorias') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('marcas')" :active="request()->routeIs('marcas')">
+                            {{ __('Gestão de Marcas') }}
+                        </x-nav-link>
+                    @endrole
+
+                    @role('admin')
+                        <x-nav-link :href="route('admin.usuarios')" :active="request()->routeIs('admin.usuarios')">
+                            {{ __('Gestão de Usuários') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.permissoes')" :active="request()->routeIs('admin.permissoes')">
+                            {{ __('Gestão de Permissões') }}
+                        </x-nav-link>
+                    @endrole
                 </div>
             </div>
 
@@ -24,7 +45,6 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
-
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -41,10 +61,8 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                    onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -54,7 +72,7 @@
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -70,6 +88,27 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            @role('user')
+                <x-responsive-nav-link :href="route('produtos')" :active="request()->routeIs('produtos')">
+                    {{ __('Gestão de Produtos') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('categorias')" :active="request()->routeIs('categorias')">
+                    {{ __('Gestão de Categorias') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('marcas')" :active="request()->routeIs('marcas')">
+                    {{ __('Gestão de Marcas') }}
+                </x-responsive-nav-link>
+            @endrole
+
+            @role('admin')
+                <x-responsive-nav-link :href="route('admin.usuarios')" :active="request()->routeIs('admin.usuarios')">
+                    {{ __('Gestão de Usuários') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.permissoes')" :active="request()->routeIs('admin.permissoes')">
+                    {{ __('Gestão de Permissões') }}
+                </x-responsive-nav-link>
+            @endrole
         </div>
 
         <!-- Responsive Settings Options -->
@@ -87,10 +126,8 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                            onclick="event.preventDefault(); this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
