@@ -1,17 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <h2>Dashboard</h2>
+    <p>Bem-vindo, {{ Auth::user()->name }} ({{ Auth::user()->role }})</p>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
+    <ul>
+        @if(Auth::user()->role === 'admin')
+            <li><a href="{{ route('admin.usuarios') }}">Gestão de Usuários</a></li>
+            <li><a href="{{ route('admin.permissoes') }}">Gestão de Permissões</a></li>
+        @else
+            <li><a href="{{ route('produtos') }}">Gestão de Produtos</a></li>
+            <li><a href="{{ route('categorias') }}">Gestão de Categorias</a></li>
+            <li><a href="{{ route('marcas') }}">Gestão de Marcas</a></li>
+        @endif
+    </ul>
 </x-app-layout>

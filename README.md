@@ -37,5 +37,35 @@ php artisan key:generate
 # Rode as migrations e seeders
 php artisan migrate --seed
 
+#Isso irá criar um usuário administrador:
+
+Email: admin@example.com
+
+Senha: password
+
+# Acesso
+A aplicação tem dois tipos de usuários:
+
+admin → Acesso às rotas de gestão de usuários e permissões
+
+user → Acesso às rotas de produtos, categorias e marcas
+
+Painel após login
+Dashboard: /dashboard
+
+Admin:
+
+/admin/usuarios
+
+/admin/permissoes
+
+Usuário comum:
+
+/produtos
+
+/categorias
+
+/marcas
+
 # Inicie o servidor local
 php artisan serve

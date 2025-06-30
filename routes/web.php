@@ -1,20 +1,30 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Dashboard comum para todos os usuários autenticados
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Rotas acessíveis apenas para administradores
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::view('/usuarios', 'admin.usuarios')->name('admin.usuarios');
+    Route::view('/permissoes', 'admin.permissoes')->name('admin.permissoes');
+});
+
+// Rotas acessíveis apenas para usuários comuns
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::view('/produtos', 'produtos')->name('produtos');
+    Route::view('/categorias', 'categorias')->name('categorias');
+    Route::view('/marcas', 'marcas')->name('marcas');
 });
 
 require __DIR__.'/auth.php';
