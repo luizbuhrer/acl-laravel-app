@@ -69,3 +69,7 @@ Usuário comum:
 
 # Inicie o servidor local
 php artisan serve
+
+# Login 
+Admin: admin@email.com / 12345678
+Comum: comum@email.com / 12345678
