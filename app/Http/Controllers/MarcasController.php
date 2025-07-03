@@ -15,3 +15,4 @@ class MarcasController
         return view('marcas.index');
     }
 }
+?>

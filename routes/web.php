@@ -41,3 +41,4 @@ Route::middleware(['auth'])->group(function () {
     })->name('permissoes.index');
 
 require __DIR__.'/auth.php';
+?>

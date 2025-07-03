@@ -18,3 +18,4 @@ class AuthServiceProvider extends ServiceProvider
     Gate::define('acessar marcas', fn ($user) => $user->role === 'user');
 }
 }
+?>

@@ -15,3 +15,4 @@ class CategoriasController
         return view('categorias.index');
     }
 }
+?>

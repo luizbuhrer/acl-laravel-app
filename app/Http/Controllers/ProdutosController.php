@@ -15,3 +15,4 @@ class ProdutosController
         return view('produtos.index');
     }
 }
+?>
